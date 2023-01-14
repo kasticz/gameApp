@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   <div class="h1Wrapper"><h1>GamesApp</h1></div> 
+    <form class="register">
+         <h2>Регистрация</h2>
+         <p class="errorPlaceholder"></p>
+         <div class="inputWrapper">
+            <label for="login">Логин</label>
+            <input name="login" required id="login" type="text">
+         </div>
+         <div class="inputWrapper">
+            <label for="email">Электронная почта</label>
+            <input name="email" required id="email" type="email">
+         </div>
+         <div class="inputWrapper">
+            <label for="password">Пароль</label>
+            <input name="password" required id="password" type="password">
+         </div>
+         <button class="registerButton">Зарегистрироваться</button>
+         <p>Уже есть аккаунт?  <a href="./">Войти</a> </p>
+    </form>
+    <script src="./auth.js"></script>  
+    <script src="./registerScript.js"></script>
+</body>
+</html>

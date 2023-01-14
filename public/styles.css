@@ -1,0 +1,86 @@
+html{
+    font-family: 'Roboto', sans-serif
+}
+body{
+    background-color: #f6f6f6;
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+}
+input,button{
+    outline: none;
+    border: none;
+    transition: 0.5s all;
+}
+button,a{
+    cursor: pointer;
+}
+.h1Wrapper{
+    width: 100%;
+    text-align-last: left;
+    padding: 20px 20px 20px 200px;
+    background-color: #fff;
+}
+
+.login,.register{
+    margin: 0 auto; 
+    width: 600px;
+    padding: 10px 20px 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 2px black;
+    border-radius: 12px;
+    font-size: 20px;
+    margin-top: 100px;
+    background-color: #fff;
+}
+
+.inputWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.inputWrapper input{
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 4px;
+    border: 1px solid #9f9f9f;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 20px;
+    padding: 5px 10px;
+}
+.inputWrapper input:focus{
+    box-shadow: 1px 1px 1px black
+}
+.inputWrapper label{
+    width: 100%;
+    text-align-last: left;
+    padding: 0 30px;
+    margin-top: 10px;
+}
+.login button, .register button{
+    width: 90%;
+    margin: 0 auto;
+    height: 50px;
+    border-radius: 6px;
+    color: white;
+    background-color: #1e90ff;
+    margin-top: 10px;
+    font-size: 20px;
+}
+.login button:hover,.login button:focus,.login button:active,.register button:hover, .register button:focus, .register button:active{
+    background-color: #1b79d6;
+}
+.login a:hover, .register a:hover{
+    text-decoration: none;
+}
+.errorPlaceholder{
+    font-size: 16px;
+    color: rgb(219, 116, 108);
+    text-align: center;
+}
