@@ -1,12 +1,33 @@
 const UserSchema = require('../mongooseSchemas/User')
 const jwt = require('jsonwebtoken')
-const statusCodes = require('http-status-codes')
+const {StatusCodes} = require('http-status-codes')
+const bcrypt = require('bcryptjs')
+
 
 
 async function login(req,res){
     const {login,password} = req.body
-    console.log(login,password)
-    res.status(200).send('5')
+    const result = {res:false,error:null,token:null}
+   
+
+    const currUser = await UserSchema.findOne({login})
+    if(currUser){
+        const isPasswordCorrect = await bcrypt.compare(password,currUser.password)
+        result.res = isPasswordCorrect
+        result.error = isPasswordCorrect ? null : 'Неверный пароль'        
+    }else{
+        result.res = false
+        result.error = 'Такого пользователя не существует'
+    }
+    if(result.res && currUser){
+        result.token =  jwt.sign({login,email:currUser.email},process.env.JWT_SECRET,{
+            expiresIn: '7d'
+        })
+    }
+    
+
+    
+    res.status(result.res ? StatusCodes.OK : StatusCodes.UNAUTHORIZED).json(result)
 }
 
 async function register(req,res){
@@ -17,12 +38,12 @@ async function register(req,res){
         expiresIn: '7d'
     })
 
-    res.status(statusCodes.StatusCodes.CREATED).json({msg:'Пользователь создан',token})
+    res.status(StatusCodes.CREATED).json({msg:'Пользователь создан',token})
 }
 async function validateToken(req,res){
     const {token} = req.body
     const result = jwt.verify(token,process.env.JWT_SECRET)
-    res.json(result)
+    res.status(StatusCodes.OK).json(result)
 }
 
 

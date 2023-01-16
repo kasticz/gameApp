@@ -1,9 +1,14 @@
 
 
 async function  checkAuth(){
+    if(location.pathname === '/register'){
+        return
+    }
     const token = localStorage.getItem('token')
     if(!token){
-        location.href = '/login'
+        if(location.pathname !== '/login'){
+            location.href = '/login'
+        }
         return;
     }
     const authResp = await fetch('/auth',{
@@ -14,14 +19,20 @@ async function  checkAuth(){
         }
     })
     const tokenData = await authResp.json()
-
-    console.log(tokenData)
    
-    // if(authResp.code !== 200){
-    //     localStorage.removeItem('token')
-    //     location.href = '/login'
-    // }
-    // console.log(location.href)
+    if(authResp.status !== 200 && location.pathname !== '/login'){
+        // localStorage.removeItem('token')
+        location.href = '/login'
+        return
+    }
+
+
+    
+    if(authResp.status === 200 && location.pathname === '/'){
+        location.href = '/games'
+        return
+    }
+    
     
 }
 checkAuth()
