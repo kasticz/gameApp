@@ -1,12 +1,13 @@
 
 
 async function  checkAuth(){
-    if(location.pathname === '/register'){
+    const url = location.pathname
+    if(url === '/register'){
         return
     }
     const token = localStorage.getItem('token')
     if(!token){
-        if(location.pathname !== '/login'){
+        if(url !== '/login'){
             location.href = '/login'
         }
         return;
@@ -18,18 +19,17 @@ async function  checkAuth(){
             'Content-type': 'application/json'
         }
     })
-    const tokenData = await authResp.json()
-   
-    if(authResp.status !== 200 && location.pathname !== '/login'){
-        // localStorage.removeItem('token')
+    const tokenData = await authResp.json()   
+    if(authResp.status !== 200 && url !== '/login'){
+        localStorage.removeItem('token')
         location.href = '/login'
         return
     }
 
 
     
-    if(authResp.status === 200 && location.pathname === '/'){
-        location.href = '/games'
+    if(authResp.status === 200 && (url === '/' || url === '/login')){        
+        location.href = `/games?uid=${tokenData._id}`
         return
     }
     

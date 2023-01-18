@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 const express = require('express');
 const app = express();
 const authRouter = require('./routes/auth')
+const gamesRouter = require('./routes/games')
 const dbConnect = require('./dbConnect/connect')
 const path = require('path')
 
@@ -26,12 +27,13 @@ app.get('/register',(req,res)=>{
 app.get('/games',(req,res)=>{
   res.sendFile(path.join(__dirname +'/public/games.html'))
 })
-app.get('/:gameId',(req,res)=>{
+app.get('/game',(req,res)=>{
   res.sendFile(path.join(__dirname +'/public/game.html'))
 })
 
 
 app.use('/auth',authRouter)
+app.use('/api/gamesAPI',gamesRouter)
 app.use(errorHandlerMiddleware);
 app.use(notFoundMiddleware);
 

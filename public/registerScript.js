@@ -13,7 +13,7 @@ registerForm.addEventListener('submit',async (e)=>{
     })
 
     const data = await resp.json()
-    if(resp.newError){    
+    if(data.newError){    
         const err = data.newError
         if(err.messages)    {
             errorPlaceholder.textContent = err.messages.join(', ');
@@ -23,7 +23,7 @@ registerForm.addEventListener('submit',async (e)=>{
     }else{
         const token = data.token
         localStorage.setItem('token',token)
-        window.location('/main')
+        location.href = '/games'
     }
   
 
