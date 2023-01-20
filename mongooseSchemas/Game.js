@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const Game = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "users",
+        ref: "User",
         required: true
     },
     title:{
@@ -19,7 +19,6 @@ const Game = new mongoose.Schema({
         required: [true, 'Пожалуйста, оцените игру'],
         max: [10,'Максимальная оценка - 10'],
         min: [0,'Максимальная оценка - 0']
-
     },
     date: {
         type: String,

@@ -23,7 +23,7 @@ registerForm.addEventListener('submit',async (e)=>{
     }else{
         const token = data.token
         localStorage.setItem('token',token)
-        location.href = '/games'
+        location.href = `/games?uid=${data.uid}&user=${data.login}`
     }
   
 

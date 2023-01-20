@@ -4,7 +4,6 @@ const errorHandlerMiddleware = (err, req, res, next) => {
   const newError = new Error('Что то пошло не так, попробуйте ещё раз')
   newError.messages = [];
   newError.status = StatusCodes.INTERNAL_SERVER_ERROR
-  // console.log(util.inspect(err))
   if (err.name === 'ValidationError') {
     Object.values(err.errors).forEach((item) =>
       newError.messages.push(item.message)

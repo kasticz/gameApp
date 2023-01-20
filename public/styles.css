@@ -16,9 +16,28 @@ input,button{
 button,a{
     cursor: pointer;
 }
-button{
-
+a{
+    text-decoration: none;
+    color: black;
 }
+.loginAnchor,.registerAnchor{
+    text-decoration: underline;
+}
+
+h1{
+    margin: 0 auto;
+    height: 100%;
+    width: 200px;
+    padding: 20px;
+    cursor: pointer;
+    text-align: center;
+    text-align-last: center;
+}
+h1:hover{
+    box-shadow: 2px 2px 2px black;
+    border-radius: 16px
+}
+
 .h1Wrapper,nav{
     width: 100%;
     text-align-last: left;
@@ -62,7 +81,7 @@ button:hover,button:focus,button:active{
     align-items: center;
     width: 100%;
 }
-.inputWrapper input{
+.inputWrapper input, .inputWrapper textarea{
     width: 90%;
     margin: 0 auto;
     border-radius: 4px;
@@ -72,8 +91,12 @@ button:hover,button:focus,button:active{
     font-size: 20px;
     padding: 5px 10px;
 }
-.inputWrapper input:focus{
+.inputWrapper input:focus {
     box-shadow: 1px 1px 1px black
+}
+.inputWrapper textarea:focus{
+    box-shadow: 2px 2px 2px black
+    
 }
 .inputWrapper label{
     width: 100%;
@@ -167,6 +190,7 @@ h2{
     text-align: center;
 }
 .error{
+    color: rgb(218, 62, 62);
     font-size: 20px;
     text-align: center;
 }
@@ -258,3 +282,42 @@ h2{
     text-align-last: left;
 }
 
+/* gamePage */
+
+.gameWrapper{
+    width: 800px;
+    margin: 0 auto;
+    display: none;
+}
+
+.gameWrapper input[type=number]{
+    position: relative;
+    width: 100px;
+    text-align-last: left;
+    right: 45%;
+    transform: translate(50%);
+}
+.gameWrapper .inputWrapper label{
+    padding: 0 40px
+}
+.gameWrapper .inputWrapper textarea{
+    /* width: auto; */
+    height: auto;
+    max-width: 90%;
+}
+.gameWrapper .editButton, .gameWrapper .createButton {
+    display: none;
+    width: 200px;
+    margin-right: 50px;
+}
+.gameWrapper .backButton{
+    width: 200px;
+    margin-left: 50px;
+
+}
+.gameWrapper .gameButtons{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}

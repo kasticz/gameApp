@@ -7,13 +7,29 @@ const authRouter = require('./routes/auth')
 const gamesRouter = require('./routes/games')
 const dbConnect = require('./dbConnect/connect')
 const path = require('path')
+const helmet = require('helmet');
+const cors = require('cors');
+const xss = require('xss-clean');
+const rateLimiter = require('express-rate-limit');
 
 
 const notFoundMiddleware = require('./middleware/pageNotFound');
 const errorHandlerMiddleware = require('./middleware/errorHandler');
 
+app.set('trust proxy', 1);
+app.use(
+  rateLimiter({
+    windowMs: 15 * 60 * 1000, 
+    max: 200, 
+  })
+);
+
 app.use(express.json());
-// extra packages
+app.use(helmet());
+app.use(cors());
+app.use(xss());
+
+
 
 
 app.use(express.static('./public'))

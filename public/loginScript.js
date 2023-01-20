@@ -18,7 +18,7 @@ loginForm.addEventListener('submit',async(e)=>{
         errorPlaceholder.textContent = loginData.error
     }else{
         localStorage.setItem('token',loginData.token)
-        location.href = `/games?uid=${loginData.uid}`
+        location.href = `/games?uid=${loginData.uid}&user=${loginData.login}`
     }
 })
 

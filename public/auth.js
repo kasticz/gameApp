@@ -27,9 +27,8 @@ async function  checkAuth(){
     }
 
 
-    
     if(authResp.status === 200 && (url === '/' || url === '/login')){        
-        location.href = `/games?uid=${tokenData._id}`
+        location.href = `/games?uid=${tokenData.uid}&user=${tokenData.login}`
         return
     }
     
